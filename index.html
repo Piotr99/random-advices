@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+html{
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 26px;
+}
+
+    </style>
+</head>
+<body>
+    Dodaj możliwości:
+    <form action="">
+    <input type="text">
+<button class="add">Dodaj</button>
+<button class="reset">Resetuj</button>
+<h2>Komputerze pokaz co mam zrobić z tym co myślę</h2>
+<button class="showAdvice">Pokaż radę</button>
+<button class="showOptions">Pokaż możliwości</button>
+<h1></h1>
+</form>
+<div></div>
+<script>
+let input = document.querySelector('input');
+let advices = ["walcz", "Przemyśl to jeszcze raz", "Dawaj pińć złotych"];
+let tabOptions = [];
+let add = document.querySelector('.add');
+let reset = document.querySelector('.reset');
+let showAdvice = document.querySelector('.showAdvice');
+let showOpions = document.querySelector('.showOptions');
+let h1 = document.querySelector("h1");
+
+
+const addOptions = (e)=>{
+e.preventDefault();
+let options = input.value;
+advices.push(options);
+alert("dodałeś: " + options)
+input.value = "";
+console.log(advices)
+
+}
+add.addEventListener('click', addOptions)
+
+
+const removeOptions = (e)=>{
+e.preventDefault();
+advices = [];
+console.log(advices)
+h1.textContent = "";
+}
+reset.addEventListener('click', removeOptions);
+
+
+
+const getAdvice = (e)=>{
+e.preventDefault()
+advices.forEach((advice, index)=>{
+index = Math.floor(Math.random()*advices.length);
+h1.textContent = advices[index];
+console.log(index)
+})
+}
+showAdvice.addEventListener('click', getAdvice);
+
+
+
+const getOptions = (e)=>{
+    e.preventDefault();
+    alert("Twoje możliwości to: " +advices)
+
+}
+showOpions.addEventListener('click', getOptions)
+</script>
+</body>
+</html>
